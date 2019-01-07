@@ -1,6 +1,6 @@
 public class Game {
   public int amountBet;
-  private int posX, posY;
+  public int posX, posY;
   public int winnings = 0;
   
   public Game(int x, int y) {
