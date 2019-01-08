@@ -32,18 +32,10 @@ public class TerminalDemo {
 
 			TextCharacter chr = new TextCharacter(
 				'\u0024',
-				new TextColor.RGB(255, 255, 255),
+				new TextColor.RGB((int)(255*Math.random()), (int)(255*Math.random()), (int)(255*Math.random())),
 				TextColor.ANSI.DEFAULT
 			);
 			screen.setCharacter(x, y, chr);
-			
-			Slots slots = new Slots();
-			TextCharacter slot = new TextCharacter(
-				'\u0004',
-				new TextColor.RGB(10, 10, 10),
-				TextColor.ANSI.DEFAULT
-			);
-			screen.setCharacter(slots.posX, slots.posY, slot);
 
 			KeyStroke key = screen.pollInput();
 
