@@ -14,3 +14,8 @@ Alex:
 1/6/19
 Ben:
 - tested tentative build of Lanterna on Windows, needs testing on Linux
+
+1/7/19
+Alex:
+- Merged branches so Game and Slots classes are available to put in map
+- Started on map and struggled to get new terminal stuff to work on windows
