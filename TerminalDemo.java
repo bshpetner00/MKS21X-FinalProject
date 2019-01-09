@@ -25,8 +25,8 @@ public class TerminalDemo {
 		Screen screen = new DefaultTerminalFactory().createScreen();
 		screen.startScreen();
 
-		long tStart = System.currentTimeMillis();
-		long lastSecond = 0;
+		/*long tStart = System.currentTimeMillis();
+		long lastSecond = 0;*/
 
 		while (true) {
 
@@ -37,13 +37,13 @@ public class TerminalDemo {
 			);
 			screen.setCharacter(x, y, chr);
 
-			Game slots = new Slots(15, 15);
+			/*Game slots = new Slots(15, 15);
 			TextCharacter slot = new TextCharacter(
 			  '\u0001',
 				new TextColor.RGB(255, 255, 255),
 				TextColor.ANSI.DEFAULT
 			);
-			screen.setCharacter(slots.posX, slots.posY, slot);
+			screen.setCharacter(slots.posX, slots.posY, slot);*/
 
 			KeyStroke key = screen.pollInput();
 
@@ -58,13 +58,13 @@ public class TerminalDemo {
 
 				putString(1, 1, screen, key+"                 ");
 			}
-			long tEnd = System.currentTimeMillis();
+			/*long tEnd = System.currentTimeMillis();
 			long millis = tEnd - tStart;
 			putString(1, 2, screen, "Milliseconds since start of program: "+millis);
 			if (millis / 1000 > lastSecond) {
 				lastSecond = millis / 1000;
 				putString(1, 3, screen, "Seconds since start of program: "+millis/1000);
-			}
+			}*/
 			screen.doResizeIfNecessary();
 			screen.refresh();
 		}
