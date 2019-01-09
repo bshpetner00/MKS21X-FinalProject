@@ -19,3 +19,8 @@ Ben:
 Alex:
 - Merged branches so Game and Slots classes are available to put in map
 - Started on map and struggled to get new terminal stuff to work on windows
+
+1/8/19
+Alex:
+- got map to work on home computers (sort of)
+- tried (but failed) to create slots on map
