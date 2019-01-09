@@ -24,3 +24,7 @@ Alex:
 Alex:
 - got map to work on home computers (sort of)
 - tried (but failed) to create slots on map
+Ben:
+- Made substantial progress of ceelo roll and calculate functions, restructred the program
+
+
