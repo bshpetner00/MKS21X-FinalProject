@@ -37,13 +37,13 @@ public class TerminalDemo {
 			);
 			screen.setCharacter(x, y, chr);
 
-			/*Game slots = new Slots(15, 15);
+			Game slots = new Slots(15, 15);
 			TextCharacter slot = new TextCharacter(
 			  '\u0001',
 				new TextColor.RGB(255, 255, 255),
 				TextColor.ANSI.DEFAULT
 			);
-			screen.setCharacter(slots.posX, slots.posY, slot);*/
+			screen.setCharacter(slots.posX, slots.posY, slot);
 
 			KeyStroke key = screen.pollInput();
 
