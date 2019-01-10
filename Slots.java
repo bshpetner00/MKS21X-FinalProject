@@ -16,7 +16,7 @@ public class Slots extends Game{
       winnings = 0;
     }
   }
-  public void spin(int val) {
+  public void spin() {
     slot1 = ((int) (Math.random() * 10)) % 5 + 1;
     slot2 = ((int) (Math.random() * 10)) % 5 + 1;
     slot3 = ((int) (Math.random() * 10)) % 5 + 1;
