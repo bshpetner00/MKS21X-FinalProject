@@ -13,12 +13,15 @@ public class Casino {
   }
   public static void main(String[] args) throws IOException {
     int x = 10; int y = 10;
+    Player p = new Player(1000);
     Screen screen = new DefaultTerminalFactory().createScreen();
 		screen.startScreen();
     screen.clear(); screen.refresh();
     while (true) {
       KeyStroke key = screen.pollInput();
         screen.setCharacter(x, y, new TextCharacter('@', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+
+      putString(1, 2, screen, "Money: $" + p.currency);
 
       Slots slots = new Slots(15, 15);
       screen.setCharacter(slots.posX, slots.posY, new TextCharacter('7', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
@@ -38,21 +41,31 @@ public class Casino {
         screen.clear();
         while (true) {
           KeyStroke gKey = screen.pollInput();
+          int bet = 5;
           putString(1, 1, screen, "Slots: " + slots.slot1 + " " + slots.slot2 + " " + slots.slot3);
+          putString(1, 2, screen, "Money Left: $" + p.currency);
+          putString(1, 3, screen, "Current Bet: $" + bet);
           if (gKey != null) {
             if (gKey.getKeyType() == KeyType.Escape) {
               x++; screen.clear();
               break;}
             else if (gKey.getKeyType() == KeyType.Tab) {
-              slots.spin();
+              if (p.bet(bet, slots) == -1) {
+                putString(1, 10, screen, "INVALID BET");
+              }
+              else {
+                slots.spin();
+                p.set(p.currency + slots.winnings);
+              }
             }
             screen.clear(); //
-            putString(1, 2, screen, gKey + "");
+            putString(1, 4, screen, gKey + "");
           }
           screen.doResizeIfNecessary();
           screen.refresh();
         }
       }
+
       screen.doResizeIfNecessary();
       screen.refresh();
     }
