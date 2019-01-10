@@ -1,10 +1,12 @@
 public class Slots extends Game{
   public int slot1, slot2, slot3;
-  public Slots() {
-    posX = 15;posY = 15;
-    slot1 = (Math.random() * 10) % 5 + 1;
-    slot2 = (Math.random() * 10) % 5 + 1;
-    slot3 = (Math.random() * 10) % 5 + 1;
+
+  public Slots() {};
+  public Slots(int x, int y) {
+    super(x, y);
+    slot1 = ((int) (Math.random() * 10)) % 5 + 1;
+    slot2 = ((int) (Math.random() * 10)) % 5 + 1;
+    slot3 = ((int) (Math.random() * 10)) % 5 + 1;
   }
   public void calculate() {
     if (slot1 == slot2 && slot2 == slot3) {
@@ -14,9 +16,9 @@ public class Slots extends Game{
       winnings = 0;
     }
   }
-  public void spin(int val) {
-    slot1 = (Math.random() * 10) % 5 + 1;
-    slot2 = (Math.random() * 10) % 5 + 1;
-    slot3 = (Math.random() * 10) % 5 + 1;
+  public void spin() {
+    slot1 = ((int) (Math.random() * 10)) % 5 + 1;
+    slot2 = ((int) (Math.random() * 10)) % 5 + 1;
+    slot3 = ((int) (Math.random() * 10)) % 5 + 1;
   }
 }
