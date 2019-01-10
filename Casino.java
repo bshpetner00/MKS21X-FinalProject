@@ -22,18 +22,18 @@ public class Casino {
 
       Slots slots = new Slots(15, 15);
       screen.setCharacter(slots.posX, slots.posY, new TextCharacter('7', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-        
+
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
         if (key.getKeyType() == KeyType.Escape) {break;}
-	else if (key.getKeyType() == KeyType.ArrowLeft) {x--;}
-	else if (key.getKeyType() == KeyType.ArrowRight) {x++;}
-	else if (key.getKeyType() == KeyType.ArrowUp) {y--;}
-	else if (key.getKeyType() == KeyType.ArrowDown) {y++;}
-	screen.clear(); //
+	      else if (key.getKeyType() == KeyType.ArrowLeft) {x--;}
+	      else if (key.getKeyType() == KeyType.ArrowRight) {x++;}
+	      else if (key.getKeyType() == KeyType.ArrowUp) {y--;}
+	      else if (key.getKeyType() == KeyType.ArrowDown) {y++;}
+	      screen.clear(); //
         putString(1, 1, screen, key + "");
       }
-      
+
       if (x == 15 && y == 15) {
         screen.clear();
         while (true) {
