@@ -38,10 +38,10 @@ public class Casino {
       }
 
       if (x == 15 && y == 15) {
+        int bet = 5;
         screen.clear();
         while (true) {
           KeyStroke gKey = screen.pollInput();
-          int bet = 5;
           putString(1, 1, screen, "Slots: " + slots.slot1 + " " + slots.slot2 + " " + slots.slot3);
           putString(1, 2, screen, "Money Left: $" + p.currency);
           putString(1, 3, screen, "Current Bet: $" + bet);
@@ -57,6 +57,12 @@ public class Casino {
                 slots.spin();
                 p.set(p.currency + slots.winnings);
               }
+            }
+            else if (gKey.getKeyType() == KeyType.ArrowUp) {
+              bet = bet + 5;
+            }
+            else if (gKey.getKeyType() == KeyType.ArrowDown && bet - 5 > 0) {
+              bet = bet - 5;
             }
             screen.clear(); //
             putString(1, 4, screen, gKey + "");
