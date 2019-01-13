@@ -31,3 +31,13 @@ Ben:
 Alex:
 - Some success in creating basic map stuff
 - Learned about Screen and KeyStrokes
+
+1/10/19
+Alex:
+- Started and implemented Player class
+- Finished implementing Slots
+
+1/12/19
+Alex:
+- Finished Player stuff in terminal
+- Started and (tentatively) finished Deck and Cards
