@@ -7,13 +7,18 @@ public class Blackjack extends Game{
   public int dTotal = 0;
   public List<Card> dHand = new ArrayList<Card>();
   
+  private int vCalc(int i) {
+    if (i < 11) {return i;}
+    else {return 10;}
+  }
+  
   public Blackjack(int x, int y) {
     super(x, y);
     deck = new Deck();
-    hand.add(deck.deal()); total += hand.get(0).value;
-    dHand.add(deck.deal()); dTotal += dHand.get(0).value;
-    hand.add(deck.deal()); total += hand.get(1).value;
-    dHand.add(deck.deal()); dTotal += dHand.get(1).value;
+    hand.add(deck.deal()); total += vCalc(hand.get(0).value);
+    dHand.add(deck.deal()); dTotal += vCalc(dHand.get(0).value);
+    hand.add(deck.deal()); total += vCalc(hand.get(1).value);
+    dHand.add(deck.deal()); dTotal += vCalc(dHand.get(1).value);
   }
   
   public void calculate() {
@@ -24,10 +29,10 @@ public class Blackjack extends Game{
   
   public void pDraw() {
     hand.add(deck.deal());
-    total += hand.get(hand.size() - 1).value;
+    total += vCalc(hand.get(hand.size() - 1).value);
   }
   public void dDraw() {
     dHand.add(deck.deal());
-    dTotal += dHand.get(dHand.size() - 1).value;
+    dTotal += vCalc(dHand.get(dHand.size() - 1).value);
   }
 }
