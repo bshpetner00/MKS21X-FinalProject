@@ -9,7 +9,7 @@ public class Blackjack extends Game{
   
   private int vCalc(int i) {
     if (i < 11) {return i;}
-    else {return 11;}
+    else {return 10;}
   }
   
   public Blackjack(int x, int y) {
