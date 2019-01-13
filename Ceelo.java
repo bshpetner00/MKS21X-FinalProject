@@ -1,10 +1,11 @@
 import java.util.*;
 
-public class Ceelo {
+public class Ceelo extends Game {
 	public ArrayList<Integer> playerDice,dealerDice; //arrays of 3 dice each
 	public int playerScore,dealerScore;
 	public boolean setMatch; //true if win, false if loss
-	public Ceelo() {
+	public Ceelo(int x, int y) {
+		super(x,y);
 		playerDice = new ArrayList<Integer>();
 		dealerDice = new ArrayList<Integer>();
 	}

@@ -28,6 +28,7 @@ public class Casino {
       screen.setCharacter(slots.posX, slots.posY, new TextCharacter('7', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       Blackjack bj = new Blackjack(10, 15);
       screen.setCharacter(bj.posX, bj.posY, new TextCharacter('B', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      Ceelo ceelo = new Ceelo(5,15);
 
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
@@ -115,6 +116,14 @@ public class Casino {
           screen.refresh();
         }
       }
+
+    /*if (x == 5 && y == 15) {
+      int bet = 5;
+      screen.clear();
+      while (true) {
+
+      }
+    }*/
 
       screen.doResizeIfNecessary();
       screen.refresh();
