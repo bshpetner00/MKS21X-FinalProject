@@ -45,6 +45,8 @@ public class Poker extends Game {
 		for (Card c: cards) {
 			values.add(c.value);
 		} //creates a list of card values
+		Collections.sort(values);
+
 
 		boolean flush = true;
 		int suit = (cards.get(0)).symbol;
@@ -61,6 +63,7 @@ public class Poker extends Game {
 				lowVal = values.get(i);
 			}
 		} //gets lowest value
+
 		if(values.contains(lowVal) && values.contains(lowVal+1) && values.contains(lowVal+2) && values.contains(lowVal+3) && values.contains(lowVal+4)) {
 			straight = true; //checks to see if all values are consecutive
 		}
@@ -70,7 +73,24 @@ public class Poker extends Game {
 			royalStraight = true;
 		}
 
-		if ()
+		if (royalStraight && flush) {
+			winnings = amountBet * 800;
+		}
+
+		if (straight && flush) {
+			winnings = amountBet * 50;
+		}
+
+		if ((values.get(0) == values.get(1) && values.get(1) == values.get(2) && values.get(2) == values.get(3)) || (values.get(1) == values.get(2) && values.get(2) == values.get(3) && values.get(3) == values.get(4))) {
+			winnings = amountBet * 25;
+		}
+
+		if (values.get(0))
+
+		if (royalStraight || straight) {
+			winnings = amountBet * 4;
+		}
+
 
 
 

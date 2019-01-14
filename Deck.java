@@ -12,7 +12,7 @@ public class Deck {
   }
   
   public Card deal() {
-    int i = (int) (Math.random() * 10) % (deck.size());
+    int i = (int) (Math.random() * 100) % (deck.size());
     return deck.remove(i);
   }
 }
