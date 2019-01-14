@@ -29,6 +29,7 @@ public class Casino {
       Blackjack bj = new Blackjack(10, 15);
       screen.setCharacter(bj.posX, bj.posY, new TextCharacter('B', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       Ceelo ceelo = new Ceelo(5,15);
+      screen.setCharacter(ceelo.posX,ceelo.posY, new TextCharacter('C', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
 
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
@@ -117,13 +118,46 @@ public class Casino {
         }
       }
 
-    /*if (x == 5 && y == 15) {
+    if (x == 5 && y == 15) {
       int bet = 5;
       screen.clear();
       while (true) {
-
-      }
-    }*/
+          KeyStroke gKey = screen.pollInput();
+          putString(1, 0, screen, "Money Left: $" + p.currency);
+          putString(1, 1, screen, "Current Bet: $" + bet);
+          putString(1, 3, screen, "Your Roll: " + ceelo.playerDice);
+          putString(1, 4, screen, "Your Score For This Round: " + ceelo.playerScore);
+          putString(1, 6, screen, "Dealer's Roll" + ceelo.dealerDice);
+          putString(1, 7, screen, "Dealer's Score For This Round: " + ceelo.dealerScore);
+          if (gKey != null) {
+            if (gKey.getKeyType() == KeyType.Escape) {
+              x++; screen.clear();
+              break;}
+            else if (gKey.getKeyType() == KeyType.Tab) {
+              if (p.bet(bet, ceelo) == -1) {
+                putString(1, 10, screen, "INVALID BET");
+              }
+              else {
+                ceelo.roll(ceelo.playerDice);
+                ceelo.roll(ceelo.dealerDice);
+                ceelo.playerScore = ceelo.calcScore(ceelo.playerDice);
+                ceelo.setMatch(ceelo.playerScore,ceelo.dealerScore);
+                ceelo.dealerScore = ceelo.calcScore(ceelo.dealerDice);
+                ceelo.setMatch(ceelo.playerScore,ceelo.dealerScore);
+                p.set(p.currency + ceelo.winnings);
+              }
+            }
+            else if (gKey.getKeyType() == KeyType.Enter) {
+              ceelo = new Ceelo(5,15);
+            }
+            else if (gKey.getKeyType() == KeyType.ArrowUp) {bet = bet + 5;}
+            else if (gKey.getKeyType() == KeyType.ArrowDown && bet - 5 > 0) {bet = bet - 5;}
+            screen.clear();
+          }
+          screen.doResizeIfNecessary();
+          screen.refresh();
+        }
+    }
 
       screen.doResizeIfNecessary();
       screen.refresh();

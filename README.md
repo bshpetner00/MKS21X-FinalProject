@@ -25,12 +25,14 @@ Alex:
 - Got map to work on home computers (sort of)
 - Tried (but failed) to create slots on map
 Ben:
-- Made substantial progress of ceelo roll and calculate functions, restructred the program
+- Made substantial progress in ceelo roll and calculate functions, restructred the program
 
 1/9/19
 Alex:
 - Some success in creating basic map stuff
 - Learned about Screen and KeyStrokes
+Ben:
+- Redesigned ceelo to make it more in line with the structure of the casino
 
 1/10/19
 Alex:
@@ -41,3 +43,12 @@ Alex:
 Alex:
 - Finished Player stuff in terminal
 - Started and (tentatively) finished Deck and Cards
+Ben:
+- Created video poker scaffold
+
+1/13/19
+Ben:
+- Finished and implemented ceelo into the casino
+- Finished and implemented video poker into the casino
+- Tested all the betting and moving to make sure that the casino works as intended on all systems
+
