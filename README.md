@@ -49,6 +49,6 @@ Ben:
 1/13/19
 Ben:
 - Finished and implemented ceelo into the casino
-- Finished and implemented video poker into the casino
+- 75% done with video poker
 - Tested all the betting and moving to make sure that the casino works as intended on all systems
 
