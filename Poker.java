@@ -10,7 +10,7 @@ public class Poker extends Game {
 	}
 	public void deal1() {
 		for (int i = 0; i < 5; i++) {
-			hand.add(deck.deal());	
+			hand.add(deck.deal());
 		}
 	}
 	public void deal2(boolean one, boolean two, boolean three, boolean four, boolean five) {
@@ -41,7 +41,7 @@ public class Poker extends Game {
 		}
 	}
 	public int calculate(ArrayList<Card> cards) {
-		Arraylist<Integer> values = new ArrayList<Integer>();
+		ArrayList<Integer> values = new ArrayList<Integer>();
 		for (Card c: cards) {
 			values.add(c.value);
 		} //creates a list of card values
@@ -70,22 +70,22 @@ public class Poker extends Game {
 
 		boolean royalStraight = false;
 		if (lowVal == 1 && values.contains(10) && values.contains(11) && values.contains(12) && values.contains(13)) {
-			royalStraight = true;
+			royalStraight = true; //for ace then 10/J/Q/K
 		}
 
 		if (royalStraight && flush) {
-			winnings = amountBet * 800;
+			winnings = amountBet * 800; //royal flush
 		}
 
 		if (straight && flush) {
-			winnings = amountBet * 50;
+			winnings = amountBet * 50; //straight flush
 		}
 
 		if ((values.get(0) == values.get(1) && values.get(1) == values.get(2) && values.get(2) == values.get(3)) || (values.get(1) == values.get(2) && values.get(2) == values.get(3) && values.get(3) == values.get(4))) {
-			winnings = amountBet * 25;
+			winnings = amountBet * 25; //4 of a kind
 		}
+		boolean tres = false;
 
-		if (values.get(0))
 
 		if (royalStraight || straight) {
 			winnings = amountBet * 4;
@@ -95,7 +95,7 @@ public class Poker extends Game {
 
 
 
-	} 
+	}
 
 
 
