@@ -75,7 +75,7 @@ public class Casino {
       }
       
       if (x == 10 & y == 15) {
-        int bet = 5;
+        int bet = 5; boolean endG = false;
         screen.clear();
         while (true) {
           KeyStroke gKey = screen.pollInput();
@@ -84,6 +84,9 @@ public class Casino {
           putString(1, 3, screen, "Your Cards: " + bj.hand);
           putString(1, 5, screen, "Dealer's Cards: X, " + bj.dHand.subList(0, bj.dHand.size() - 1));
           putString(1, 7, screen, "Your Total: " + bj.total);
+          if (endG) {
+            putString(1, 8, screen, "Dealer's Total: " + bj.dTotal);
+          }
           if (gKey != null) {
             if (gKey.getKeyType() == KeyType.Escape) {
               x++; screen.clear();
@@ -92,22 +95,28 @@ public class Casino {
                 bj.pDraw();
             }
             else if (gKey.getKeyType() == KeyType.Enter) {
-              if (p.bet(bet, bj) == -1) {
-                putString(1, 10, screen, "INVALID BET");
-              }
-              else {
-                boolean play = true;
-                while (play) {
-                  if (bj.dTotal == 21) {play = false;}
-                  if (bj.dTotal < 15) {bj.dDraw();}
-                  else {
-                    if (((int) (Math.random() * 10)) % 2 == 0) {bj.dDraw();}
-                    else {play = false;}
-                  }
+              if (!endG) {
+                if (p.bet(bet, bj) == -1) {
+                  putString(1, 10, screen, "INVALID BET");
                 }
-                bj.calculate();
-                p.set(p.currency + bj.winnings);
+                else {
+                  boolean play = true;
+                  while (play) {
+                    if (bj.dTotal == 21) {play = false;}
+                    if (bj.dTotal < 15) {bj.dDraw();}
+                    else {
+                      if (((int) (Math.random() * 10)) % 2 == 0) {bj.dDraw();}
+                      else {play = false;}
+                    }
+                  }
+                  bj.calculate();
+                  p.set(p.currency + bj.winnings);
+                  endG = true;
+                }
+            }
+              else {
                 bj = new Blackjack(10, 15);
+                endG = false;
               }
             }
             else if (gKey.getKeyType() == KeyType.ArrowUp) {bet = bet + 5;}
