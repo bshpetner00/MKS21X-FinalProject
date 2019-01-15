@@ -102,12 +102,9 @@ public class Casino {
                 else {
                   boolean play = true;
                   while (play) {
-                    if (bj.dTotal == 21) {play = false;}
-                    if (bj.dTotal < 15) {bj.dDraw();}
-                    else {
-                      if (((int) (Math.random() * 10)) % 2 == 0) {bj.dDraw();}
-                      else {play = false;}
-                    }
+                    if (bj.dTotal >= 21) {play = false;}
+                    if (bj.dTotal < 17) {bj.dDraw();}
+                    else {play = false;}
                   }
                   bj.calculate();
                   p.set(p.currency + bj.winnings);

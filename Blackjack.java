@@ -22,8 +22,8 @@ public class Blackjack extends Game{
   }
   
   public void calculate() {
-    if (total > 21 || dTotal > total) {winnings = 0;}
-    else if (total > dTotal || dTotal > 21) {winnings = amountBet * 2;}
+    if (total > 21 || ((dTotal > total ) && (dTotal <= 21))) {winnings = 0;}
+    else if (((total > dTotal) && (total <= 21)) || ((dTotal > 21) && total <= 21)) {winnings = amountBet * 2;}
     else {winnings = amountBet;}
   }
   
