@@ -51,6 +51,8 @@ public class Casino {
           putString(1, 1, screen, "Slots: " + slots.slot1 + " " + slots.slot2 + " " + slots.slot3);
           putString(1, 2, screen, "Money Left: $" + p.currency);
           putString(1, 3, screen, "Current Bet: $" + bet);
+          putString(1, 15, screen, "Press Up or Down to bet higher or lower");
+          putString(1, 16, screen, "Press Tab to spin");
           if (gKey != null) {
             if (gKey.getKeyType() == KeyType.Escape) {
               x++; screen.clear();
@@ -87,6 +89,9 @@ public class Casino {
           if (endG) {
             putString(1, 8, screen, "Dealer's Total: " + bj.dTotal);
           }
+          putString(1, 15, screen, "Press Up or Down to bet higher or lower");
+          putString(1, 16, screen, "Press Tab to hit, press Enter to play");
+          putString(1, 17, screen, "Press Enter after a game to reset the game");
           if (gKey != null) {
             if (gKey.getKeyType() == KeyType.Escape) {
               x++; screen.clear();
