@@ -86,7 +86,8 @@ public class Poker extends Game {
 		}
 
 		boolean tres = false;
-
+		ArrayList<Integer> trace = values;
+		//index of in sub arrays repeated 3 times
 
 		if (royalStraight || straight) {
 			winnings = amountBet * 4;
