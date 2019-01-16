@@ -52,3 +52,11 @@ Ben:
 - 75% done with video poker
 - Tested all the betting and moving to make sure that the casino works as intended on all systems
 
+1/14/19
+Ben: 
+- Slight improvements to video poker
+
+1/15/19
+Ben:
+- Fixed blackjack bug
+
