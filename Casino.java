@@ -23,7 +23,6 @@ public class Casino {
         screen.setCharacter(x, y, new TextCharacter('@', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
 
       putString(1, 2, screen, "Money: $" + p.currency);
-      putString(1, 2, screen, "Money: $" + p.currency);
 
       Slots slots = new Slots(15, 15);
       screen.setCharacter(slots.posX, slots.posY, new TextCharacter('7', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
@@ -75,7 +74,7 @@ public class Casino {
           screen.refresh();
         }
       }
-      
+
       if (x == 10 & y == 15) {
         int bet = 5; boolean endG = false;
         screen.clear();
@@ -84,11 +83,14 @@ public class Casino {
           putString(1, 0, screen, "Money Left: $" + p.currency);
           putString(1, 1, screen, "Current Bet: $" + bet);
           putString(1, 3, screen, "Your Cards: " + bj.hand);
-          putString(1, 5, screen, "Dealer's Cards: X, " + bj.dHand.subList(0, bj.dHand.size() - 1));
-          putString(1, 7, screen, "Your Total: " + bj.total);
           if (endG) {
             putString(1, 8, screen, "Dealer's Total: " + bj.dTotal);
+            putString(1, 5, screen, "Dealer's Cards: " + bj.dHand);
           }
+          else {
+            putString(1, 5, screen, "Dealer's Cards: X, " + bj.dHand.subList(0, bj.dHand.size() - 1));
+          }
+          putString(1, 7, screen, "Your Total: " + bj.total);
           putString(1, 15, screen, "Press Up or Down to bet higher or lower");
           putString(1, 16, screen, "Press Tab to hit, press Enter to play");
           putString(1, 17, screen, "Press Enter after a game to reset the game");
@@ -177,4 +179,3 @@ public class Casino {
   screen.stopScreen();
   }
 }
-

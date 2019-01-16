@@ -52,7 +52,7 @@ public class Ceelo extends Game {
 		if (dscore == 0) {
 			if (pscore == 100) {
 				this.setMatch = true;
-			} 
+			}
 			else if (pscore == -100) {
 				this.setMatch = false;
 			}
@@ -77,7 +77,7 @@ public class Ceelo extends Game {
 				this.setMatch(this.playerScore,this.dealerScore);
 				this.dealerScore = this.calcScore(this.dealerDice);
 				this.setMatch(this.playerScore,this.dealerScore);
-			}	
+			}
 		}
 		if (this.setMatch) {
 			winnings = 2 * amountBet;

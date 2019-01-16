@@ -15,6 +15,7 @@ public class Slots extends Game{
     else {
       winnings = 0;
     }
+    amountBet = 0;
   }
   public void spin() {
     slot1 = ((int) (Math.random() * 10)) % 5 + 1;
