@@ -84,6 +84,7 @@ public class Poker extends Game {
 		if ((values.get(0) == values.get(1) && values.get(1) == values.get(2) && values.get(2) == values.get(3)) || (values.get(1) == values.get(2) && values.get(2) == values.get(3) && values.get(3) == values.get(4))) {
 			winnings = amountBet * 25; //4 of a kind
 		}
+
 		boolean tres = false;
 
 
