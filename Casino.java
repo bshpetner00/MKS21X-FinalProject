@@ -12,6 +12,7 @@ public class Casino {
       screen.setCharacter(x+i, y, new TextCharacter(str.charAt(i)));
     }
   }
+  
   public static void main(String[] args) throws IOException {
     int x = 10; int y = 10;
     Player p = new Player(1000);
@@ -39,36 +40,58 @@ public class Casino {
 	       else if (key.getKeyType() == KeyType.ArrowUp) {y--;}
 	       else if (key.getKeyType() == KeyType.ArrowDown) {y++;}
 	       screen.clear();
-         putString(1, 1, screen, key + "");
+         //putString(1, 1, screen, key + "");
       }
 
       if (x == 15 && y == 15) {
-        int bet = 5;
+        int bet = 5; boolean rule = false;
         screen.clear();
         while (true) {
           KeyStroke gKey = screen.pollInput();
-          putString(1, 1, screen, "Slots: " + slots.slot1 + " " + slots.slot2 + " " + slots.slot3);
-          putString(1, 2, screen, "Money Left: $" + p.currency);
-          putString(1, 3, screen, "Current Bet: $" + bet);
-          putString(1, 15, screen, "Press Up or Down to bet higher or lower");
-          putString(1, 16, screen, "Press Tab to spin");
-          if (gKey != null) {
-            if (gKey.getKeyType() == KeyType.Escape) {
-              x++; screen.clear();
-              break;}
-            else if (gKey.getKeyType() == KeyType.Tab) {
-              if (p.bet(bet, slots) == -1) {
-                putString(1, 10, screen, "INVALID BET");
-              }
-              else {
-                slots.spin(); slots.calculate();
-                p.set(p.currency + slots.winnings);
+          if (rule) {
+            putString(1, 1, screen, "---RULES FOR SLOTS---");
+    	    putString(1, 3, screen, "- Place your bet to put into the machine.");
+    	    putString(1, 4, screen, "- Spin the slots!");
+    	    putString(1, 5, screen, "- When you get a triple of any number, you get back your bet multiplied by the number you got.");
+    	    putString(1, 10, screen, "Press Home to go back.");
+    	    if (gKey != null) {
+              if (gKey.getKeyType() == KeyType.Escape) {
+                x++; screen.clear();
+                break;}
+              else if (gKey.getKeyType() == KeyType.Home) {
+                rule = false; screen.clear();
               }
             }
-            else if (gKey.getKeyType() == KeyType.ArrowUp) {bet = bet + 5;}
-            else if (gKey.getKeyType() == KeyType.ArrowDown && bet - 5 > 0) {bet = bet - 5;}
-            screen.clear();
+          }
+          else {
+            putString(1, 1, screen, "Slots: " + slots.slot1 + " " + slots.slot2 + " " + slots.slot3);
+            putString(1, 2, screen, "Money Left: $" + p.currency);
+            putString(1, 3, screen, "Current Bet: $" + bet);
+            putString(1, 15, screen, "Press Up or Down to bet higher or lower");
+            putString(1, 16, screen, "Press Tab to spin");
+            putString(1, 17, screen, "Press Home to view the rules");
+            putString(1, 18, screen, "Press Escape to leave the game.");
+            if (gKey != null) {
+              if (gKey.getKeyType() == KeyType.Escape) {
+                x++; screen.clear();
+                break;}
+              else if (gKey.getKeyType() == KeyType.Home) {
+                rule = true;
+              }
+              else if (gKey.getKeyType() == KeyType.Tab) {
+                if (p.bet(bet, slots) == -1) {
+                  putString(1, 10, screen, "INVALID BET");
+                }
+                else {
+                  slots.spin(); slots.calculate();
+                  p.set(p.currency + slots.winnings);
+                }
+              }
+              else if (gKey.getKeyType() == KeyType.ArrowUp) {bet = bet + 5;}
+              else if (gKey.getKeyType() == KeyType.ArrowDown && bet - 5 > 0) {bet = bet - 5;}
+              screen.clear();
             //putString(1, 4, screen, gKey + "");
+            }
           }
           screen.doResizeIfNecessary();
           screen.refresh();
