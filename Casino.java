@@ -53,7 +53,7 @@ public class Casino {
     	    putString(1, 3, screen, "- Place your bet to put into the machine.");
     	    putString(1, 4, screen, "- Spin the slots!");
     	    putString(1, 5, screen, "- When you get a triple of any number, you get back your bet multiplied by the number you got.");
-    	    putString(1, 10, screen, "Press Home to go back.");
+    	    putString(1, 10, screen, "Press Home to go back, or Escape if these rules are too complicated.");
     	    if (gKey != null) {
               if (gKey.getKeyType() == KeyType.Escape) {
                 x++; screen.clear();
