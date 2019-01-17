@@ -12,7 +12,7 @@ public class Casino {
       screen.setCharacter(x+i, y, new TextCharacter(str.charAt(i)));
     }
   }
-  
+
   public static void main(String[] args) throws IOException {
     int x = 10; int y = 10;
     Player p = new Player(1000);
@@ -110,7 +110,9 @@ public class Casino {
     	    putString(1, 5, screen, "- Your goal is to get higher than the dealer OR a total of 21.");
     	    putString(1, 6, screen, "- You draw all your cards first until you are satisfied with your hand.");
     	    putString(1, 7, screen, "- You get double your bet back when you win.");
-    	    putString(1, 10, screen, "Press Home to go back.");
+          putString(1, 8, screen, "- Aces = 1, 2 = 2, 3 = 3, ...");
+          putString(1, 9, screen, "- Jacks, Queens, and Kings are worth 10.");
+    	    putString(1, 15, screen, "Press Home to go back.");
     	    if (gKey != null) {
               if (gKey.getKeyType() == KeyType.Escape) {
                 x++; screen.clear();
@@ -144,7 +146,7 @@ public class Casino {
               else if (gKey.getKeyType() == KeyType.Home) {
                 rule = true;
               }
-              else if (gKey.getKeyType() == KeyType.Tab) {
+              else if (gKey.getKeyType() == KeyType.Tab && bj.total < 21 && !endG) {
                   bj.pDraw();
               }
               else if (gKey.getKeyType() == KeyType.Enter) {
