@@ -87,18 +87,64 @@ public class Poker extends Game {
 
 		boolean tres = false;
 		ArrayList<Integer> trace = values;
-		//index of in sub arrays repeated 3 times
+		for (int t = 0; t < trace.size(); t++) {
+			for (int j = t+1; j < trace.size(); j++) {
+				if ((trace.get(t)).equals(trace.get(j))) {
+					three++;
+				}
+				if (j == trace.size()-1 && three != 2) {
+					three = 0;
+				}
+				else if (j == trace.size()-1 && counter >= 2) {
+					tres = true;
+					int tresVal = trace.get(2);
+				}
+			}
+		}
+
+		boolean dos = false;
+		if (tres) {
+			trace.remove(tresVal);
+			trace.remove(tresVal);
+			trace.remove(tresVal);
+			if ((trace.get(0)).equals(trace.get(1))) {
+				dos = true;
+			}
+		}
+
+		if (tres && dos) {
+			winnings = amountBet * 9;
+		} //full house
+
+		if (flush) {
+			winnings = amountBet * 6;
+		} //flush
 
 		if (royalStraight || straight) {
 			winnings = amountBet * 4;
+		} //straight
+
+		if (tres && !dos) {
+			winnings = amountBet * 3;
+		} //three of a kind
+
+		if (!tres) {
+			int pairCount = 0;
+			for (int w = 0; w < values.size()-1; w++) {
+				if ((values.get(w)).equals(values.get(w+1))) {
+					pairCount++;
+				}
+			}
+			if (pairCount >= 2) {
+				winnings = amountBet * 2;
+			} //two pair
+			else {
+				for (int l = 0; l < values.size()-1; l++) {
+					if ((values.get(w)).equals(values.get(w+1)) && (values.get(w) >= 11 || values.get(w) == 1)) {
+						winnings = amountBet; //pair of jacks or better	
+					}
+				}
+			}
 		}
-
-
-
-
-
 	}
-
-
-
 }

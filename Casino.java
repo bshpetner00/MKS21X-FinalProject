@@ -21,9 +21,8 @@ public class Casino {
     screen.clear(); screen.refresh();
     while (true) {
       KeyStroke key = screen.pollInput();
-        screen.setCharacter(x, y, new TextCharacter('@', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-
-      putString(1, 2, screen, "Money: $" + p.currency);
+      screen.setCharacter(x, y, new TextCharacter('@', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      putString(1, 4, screen, "Money: $" + p.currency);
 
       Slots slots = new Slots(15, 15);
       screen.setCharacter(slots.posX, slots.posY, new TextCharacter('7', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
