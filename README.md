@@ -53,10 +53,26 @@ Ben:
 - Tested all the betting and moving to make sure that the casino works as intended on all systems
 
 1/14/19
-Ben: 
+Ben:
 - Slight improvements to video poker
 
 1/15/19
 Ben:
 - Fixed blackjack bug
+Alex:
+- Added directions for Slots and Blackjack
 
+1/16/19
+Ben:
+- Finalized prize output for vpoker
+Alex:
+- Added rule pages for Slots and Blackjack
+- Began to beautify game pages
+
+1/17/18
+Ben:
+- Completely finished vpoker, need to implement
+
+1/18/19
+Ben:
+- Started vpoker implementation

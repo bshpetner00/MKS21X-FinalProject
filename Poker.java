@@ -40,7 +40,7 @@ public class Poker extends Game {
 			numToDeal--;
 		}
 	}
-	public int calculate(ArrayList<Card> cards) {
+	public void calculate(ArrayList<Card> cards) {
 		ArrayList<Integer> values = new ArrayList<Integer>();
 		for (Card c: cards) {
 			values.add(c.value);
@@ -58,12 +58,6 @@ public class Poker extends Game {
 
 		boolean straight = false;
 		int lowVal = values.get(0);
-		for (int i = 1; i < values.size();i++) {
-			if (values.get(i) < lowVal) {
-				lowVal = values.get(i);
-			}
-		} //gets lowest value
-
 		if(values.contains(lowVal) && values.contains(lowVal+1) && values.contains(lowVal+2) && values.contains(lowVal+3) && values.contains(lowVal+4)) {
 			straight = true; //checks to see if all values are consecutive
 		}
@@ -87,6 +81,8 @@ public class Poker extends Game {
 
 		boolean tres = false;
 		ArrayList<Integer> trace = values;
+		int three = 0;
+		int tresVal = 0;
 		for (int t = 0; t < trace.size(); t++) {
 			for (int j = t+1; j < trace.size(); j++) {
 				if ((trace.get(t)).equals(trace.get(j))) {
@@ -95,9 +91,9 @@ public class Poker extends Game {
 				if (j == trace.size()-1 && three != 2) {
 					three = 0;
 				}
-				else if (j == trace.size()-1 && counter >= 2) {
+				else if (j == trace.size()-1 && three >= 2) {
 					tres = true;
-					int tresVal = trace.get(2);
+					tresVal = trace.get(2);
 				}
 			}
 		}
@@ -140,8 +136,8 @@ public class Poker extends Game {
 			} //two pair
 			else {
 				for (int l = 0; l < values.size()-1; l++) {
-					if ((values.get(w)).equals(values.get(w+1)) && (values.get(w) >= 11 || values.get(w) == 1)) {
-						winnings = amountBet; //pair of jacks or better	
+					if ((values.get(l)).equals(values.get(l+1)) && (values.get(l) >= 11 || values.get(l) == 1)) {
+						winnings = amountBet; //pair of jacks or better
 					}
 				}
 			}
