@@ -30,8 +30,14 @@ public class Casino {
       screen.setCharacter(bj.posX, bj.posY, new TextCharacter('B', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       Ceelo ceelo = new Ceelo(5,15);
       screen.setCharacter(ceelo.posX,ceelo.posY, new TextCharacter('C', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+<<<<<<< HEAD
+      Poker poker = new Poker(1,15);
+      screen.setCharacter(poker.posX,poker.posY, new TextCharacter('P', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+
+=======
       Roulette rt = new Roulette(25, 15);
       screen.setCharacter(rt.posX, rt.posY, new TextCharacter('R', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+>>>>>>> 2756d91cd4c1de19749dbd05813b0c84e3ed13be
 
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
@@ -183,7 +189,7 @@ public class Casino {
       }
 
     if (x == 5 && y == 15) {
-      int bet = 5;
+      int bet = 5; boolean rule = false;
       screen.clear();
       while (true) {
           KeyStroke gKey = screen.pollInput();
@@ -193,6 +199,28 @@ public class Casino {
           putString(1, 4, screen, "Your Score For This Round: " + ceelo.playerScore);
           putString(1, 6, screen, "Dealer's Roll" + ceelo.dealerDice);
           putString(1, 7, screen, "Dealer's Score For This Round: " + ceelo.dealerScore);
+          putString(1, 15, screen, "Press Tab to roll the dice");
+          putString(1, 16, screen, "Press Enter to start a new round.");
+          putString(1, 17, screen, "Press Home to view the rules");
+          putString(1, 18, screen, "Press Escape to leave the game.");
+          if (rule) {
+            putString(1, 1, screen, "---RULES FOR CEELO---");
+            putString(1, 3, screen, "-You and the dealer each get 3 dice");
+            putString(1, 4, screen, "-Press tab to roll and have the dealer roll");
+            putString(1, 5, screen, "-If you roll a 4-5-6. you automatically win. 1-2-3 you automatically lose");
+            putString(1, 6, screen, "-Otherwise, score is calculated by the roll having 2 of the same number and one different. The one different number is the score.");
+            putString(1, 7, screen, "-If triples are rolled, they can only be beaten by 4-5-6 (obviously) or triples of a higher number.");
+            putString(1, 8, screen, "-When you press tab, the game will keep rolling for you and the dealer until you both get a different score. Highest score wins! ");
+            putString(1, 10, screen, "-Press Home to go back, or Escape to leave ceelo.");
+            if (gKey != null) {
+              if (gKey.getKeyType() == KeyType.Escape) {
+                x++; screen.clear();
+                break;}
+              else if (gKey.getKeyType() == KeyType.Home) {
+                rule = false; screen.clear();
+                break;}
+            }
+          }
           if (gKey != null) {
             if (gKey.getKeyType() == KeyType.Escape) {
               x++; screen.clear();
@@ -209,10 +237,14 @@ public class Casino {
                 ceelo.dealerScore = ceelo.calcScore(ceelo.dealerDice);
                 ceelo.setMatch(ceelo.playerScore,ceelo.dealerScore);
                 p.set(p.currency + ceelo.winnings);
+                ceelo.winnings = 0;
               }
             }
             else if (gKey.getKeyType() == KeyType.Enter) {
               ceelo = new Ceelo(5,15);
+            }
+            else if (gKey.getKeyType() ==  KeyType.Home) {
+              rule = true;
             }
             else if (gKey.getKeyType() == KeyType.ArrowUp) {bet = bet + 5;}
             else if (gKey.getKeyType() == KeyType.ArrowDown && bet - 5 > 0) {bet = bet - 5;}
@@ -222,6 +254,79 @@ public class Casino {
           screen.refresh();
         }
     }
+
+    if (x == 1 && y == 15) {
+        int bet = 5; boolean rule = false; boolean dealt = false;
+        screen.clear();
+        while (true) {
+          KeyStroke gKey = screen.pollInput();
+          if (rule) {
+            putString(1, 1, screen, "---RULES FOR POKER---");
+          putString(1, 3, screen, "-You initially get 5 cards, and you may select which you want to discard and have replaced by pressing numbers 1-5");
+          putString(1, 4, screen, "-You will then recieve your new cards and the value of your hand/potential winnings will be calculated and disbursed respectively");
+          putString(1, 10, screen, "Press Home to go back to the game, or Escape to go back to the Casino");
+          if (gKey != null) {
+              if (gKey.getKeyType() == KeyType.Escape) {
+                x++; screen.clear();
+                break;}
+              else if (gKey.getKeyType() == KeyType.Home) {
+                rule = false; screen.clear();
+              }
+            }
+          }
+          else {
+            putString(1, 0, screen, "Money Left: $" + p.currency);
+            putString(1, 1, screen, "Current Bet: $" + bet);
+            putString(1, 2, screen, "Your Cards: " + poker.hand);
+            putString(1, 15, screen, "Press Up or Down to bet higher or lower");
+            putString(1, 16, screen, "Press Tab to get your starting hand");
+            putString(1, 17, screen, "Press F1-F5 to select cards which you'd like to discard");
+            putString(1, 18, screen, "Press Enter to conclude the round.");
+            putString(1, 19, screen, "Press Home to view rules & Press Escape to leave the game");
+            if (gKey != null) {
+              if (gKey.getKeyType() == KeyType.Escape) {
+                x++; screen.clear();
+                break;}
+              else if (gKey.getKeyType() == KeyType.Home) {
+                rule = true;
+              }
+              else if (gKey.getKeyType() == KeyType.Tab) {
+                if (p.bet(bet, poker) == -1) {
+                  putString(1, 10, screen, "INVALID BET");
+                }
+                else {
+                  poker.deal1();
+                }
+              }
+              else if (gKey.getKeyType() == KeyType.F1 && (poker.hand).size() > 0) {
+                poker.one = true;
+              }
+              else if (gKey.getKeyType() == KeyType.F2 && (poker.hand).size() > 0) {
+                poker.two = true;
+              }
+              else if (gKey.getKeyType() == KeyType.F3 && (poker.hand).size() > 0) {
+                poker.three = true;
+              }
+              else if (gKey.getKeyType() == KeyType.F4 && (poker.hand).size() > 0) {
+                poker.four = true;
+              }
+              else if (gKey.getKeyType() == KeyType.F5 && (poker.hand).size() > 0) {
+                poker.five = true;  
+              }
+              else if (gKey.getKeyType() == KeyType.Enter && (poker.hand).size() > 0) {
+                poker.deal2(poker.one,poker.two,poker.three,poker.four,poker.five);
+                poker.calculate(poker.hand);
+                poker.winnings = 0;
+              }
+              else if (gKey.getKeyType() == KeyType.ArrowUp) {bet = bet + 5;}
+              else if (gKey.getKeyType() == KeyType.ArrowDown && bet - 5 > 0) {bet = bet - 5;}
+              screen.clear();
+            }
+          }
+          screen.doResizeIfNecessary();
+          screen.refresh();
+        }
+      }
 
       screen.doResizeIfNecessary();
       screen.refresh();

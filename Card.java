@@ -6,6 +6,13 @@ public class Card {
     symbol = s;
     value = v;
   }
+
+  public int getSuit() {
+    return symbol;
+  }
+  public int getValue() {
+    return value;
+  }
   
   public String toString() {
     String s = "";
@@ -19,5 +26,12 @@ public class Card {
     else if (value == 13) {s += "K";}
     else {s += value;}
     return s;
+  }
+
+  public static void main(String[] args) {
+    Card c = new Card(4,1);
+    System.out.println(c.toString());
+    System.out.println(""+c.getSuit());
+    System.out.println(""+c.getValue());
   }
 }

@@ -4,9 +4,15 @@ public class Poker extends Game {
 	private Deck deck;
 	public int score = 0;
 	public ArrayList<Card> hand = new ArrayList<Card>();
+	public boolean one,two,three,four,five;
 	public Poker(int x, int y) {
 		super(x,y);
 		deck = new Deck();
+		one = false;
+		two = false;
+		three = false;
+		four = false;
+		five = false;
 	}
 	public void deal1() {
 		for (int i = 0; i < 5; i++) {
@@ -14,44 +20,34 @@ public class Poker extends Game {
 		}
 	}
 	public void deal2(boolean one, boolean two, boolean three, boolean four, boolean five) {
-		int numToDeal = 0;
 		if (one) {
-			hand.remove(hand.get(0));
-			numToDeal++;
+			hand.set(0, deck.deal());
 		}
 		if (two) {
-			hand.remove(hand.get(1));
-			numToDeal++;
+			hand.set(0, deck.deal());
 		}
 		if (three) {
-			hand.remove(hand.get(2));
-			numToDeal++;
+			hand.set(0, deck.deal());
 		}
 		if (four) {
-			hand.remove(hand.get(3));
-			numToDeal++;
+			hand.set(0, deck.deal());
 		}
 		if (five) {
-			hand.remove(hand.get(4));
-			numToDeal++;
-		}
-		while (numToDeal > 0) {
-			hand.add(deck.deal());
-			numToDeal--;
+			hand.set(0, deck.deal());
 		}
 	}
 	public void calculate(ArrayList<Card> cards) {
 		ArrayList<Integer> values = new ArrayList<Integer>();
-		for (Card c: cards) {
-			values.add(c.value);
+		for (int c = 0; c < cards.size(); c++) {
+			values.add(cards.get(c).getValue());
 		} //creates a list of card values
 		Collections.sort(values);
 
 
 		boolean flush = true;
 		int suit = (cards.get(0)).symbol;
-		for (Card k: cards) {
-			if (k.symbol != suit) {
+		for (int k = 0; k < cards.size(); k++) {
+			if (cards.get(k).getSuit() != suit) {
 				flush = false;
 			}
 		} //checks for a flush
