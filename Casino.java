@@ -2,6 +2,7 @@ import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.input.*;
 import com.googlecode.lanterna.terminal.*;
 import com.googlecode.lanterna.screen.*;
+import com.googlecode.lanterna.TextColor.*;
 import java.io.IOException;
 import java.awt.Color;
 import java.util.*;
@@ -330,12 +331,15 @@ public class Casino {
         while (true) {
           KeyStroke gKey = screen.pollInput();
           putString(1, 0, screen, "Money Left: $" + p.currency);
-          putString(1, 1, screen, "Total Bet: $" + rt.totalBet);
+          putString(1, 1, screen, "Green Bet: $" + rt.greenBet);
+          putString(1, 2, screen, "Black Bet: $" + rt.blackBet);
+          putString(1, 3, screen, "Red Bet: $" + rt.redBet);
+          putString(1, 4, screen, "Total Bet: $" + rt.totalBet);
           for (int i = 0; i < rt.board.length; i++) {
             putString(rt.board[i].xCoor, 5, screen, "" + rt.board[i]);
             putString(rt.board[i].xCoor, 7, screen, "" + rt.board[i].boxBet);
           }
-          putString(3 * xG + 1, 6, screen, "^");
+          putString(4 * xG + 1, 6, screen, "^");
           if (endG) {
             putString(1, 9, screen, "Wheel rolled a: " + rt.winner);
           }
@@ -353,6 +357,30 @@ public class Casino {
             }
             else if (gKey.getKeyType() == KeyType.ArrowDown && rt.totalBet > 0 && !endG) {
               rt.betDown(rt.board[xG]);
+            }
+            else if (gKey.getKeyType() == KeyType.F1 && !endG) {
+              rt.greenBet += 5;
+              rt.totalBet += 5;
+            }
+            else if (gKey.getKeyType() == KeyType.F2 && !endG) {
+              rt.greenBet -= 5;
+              rt.totalBet -= 5;
+            }
+            else if (gKey.getKeyType() == KeyType.F3 && !endG) {
+              rt.blackBet += 5;
+              rt.totalBet += 5;
+            }
+            else if (gKey.getKeyType() == KeyType.F4 && !endG) {
+              rt.blackBet -= 5;
+              rt.totalBet -= 5;
+            }
+            else if (gKey.getKeyType() == KeyType.F5 && !endG) {
+              rt.redBet += 5;
+              rt.totalBet += 5;
+            }
+            else if (gKey.getKeyType() == KeyType.F6 && !endG) {
+              rt.redBet -= 5;
+              rt.totalBet -= 5;
             }
             else if (gKey.getKeyType() == KeyType.Enter) {
               if (!endG) {
