@@ -22,6 +22,7 @@ And for certain Windows systems where for some reason just using "java" won't le
 
 javaw -cp "lanterna.jar;." Casino
 
+All Directions on how to play the game will be displayed when running it.
 Have Fun!
 
 ---
