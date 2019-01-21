@@ -30,6 +30,8 @@ public class Casino {
       screen.setCharacter(bj.posX, bj.posY, new TextCharacter('B', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       Ceelo ceelo = new Ceelo(5,15);
       screen.setCharacter(ceelo.posX,ceelo.posY, new TextCharacter('C', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      Roulette rt = new Roulette(25, 15);
+      screen.setCharacter(rt.posX, rt.posY, new TextCharacter('R', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
 
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
