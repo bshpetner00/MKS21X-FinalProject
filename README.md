@@ -6,14 +6,20 @@ Final Casino Project - Ben Shpetner, Alexander Zou, Period 3
 Welcome to our casino! Here we have a grand total of five (5) casino games you can play!
 - Video Poker, Ceelo, Slots, Blackjack, and Roulette
 
-To compile and run, type in (the terminal):
+To compile, type in (the terminal):
 
-javac -cp lanterna.jar:. Casino.java \n
+javac -cp lanterna.jar:. Casino.java
+
+To run, type in:
+
 java -cp lanterna.jar:. Casino
 
-For Windows systems, type in:
+For Windows systems, for compiling type in:
 
-javac -cp "lanterna.jar;." Casino.java \n
+javac -cp "lanterna.jar;." Casino.java
+
+And for certain Windows systems where for some reason just using "java" won't let it run, type in (after compiling):
+
 javaw -cp "lanterna.jar;." Casino
 
 Have Fun!
