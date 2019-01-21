@@ -76,3 +76,15 @@ Ben:
 1/18/19
 Ben:
 - Started vpoker implementation
+
+1/19/10
+???
+
+1/20/19
+Ben:
+- Edits to Poker
+- Partial implementation of Poker
+
+1/21/19
+Ben: 
+- Created Roulette color betting system
