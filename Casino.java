@@ -30,14 +30,10 @@ public class Casino {
       screen.setCharacter(bj.posX, bj.posY, new TextCharacter('B', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       Ceelo ceelo = new Ceelo(5,15);
       screen.setCharacter(ceelo.posX,ceelo.posY, new TextCharacter('C', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-<<<<<<< HEAD
       Poker poker = new Poker(1,15);
       screen.setCharacter(poker.posX,poker.posY, new TextCharacter('P', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-
-=======
-      Roulette rt = new Roulette(25, 15);
+      Roulette rt = new Roulette(20, 15);
       screen.setCharacter(rt.posX, rt.posY, new TextCharacter('R', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
->>>>>>> 2756d91cd4c1de19749dbd05813b0c84e3ed13be
 
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
