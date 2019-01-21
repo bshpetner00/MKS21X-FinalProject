@@ -2,6 +2,7 @@ public class Card {
   public int symbol;
   public int value;
   
+  //constructor sets symbol and value values 
   public Card(int s, int v) {
     symbol = s;
     value = v;
@@ -14,6 +15,7 @@ public class Card {
     return value;
   }
   
+  //for displaying in-game
   public String toString() {
     String s = "";
     if (symbol == 1) {s += "Diamonds ";}
@@ -27,11 +29,11 @@ public class Card {
     else {s += value;}
     return s;
   }
-
+/*for debugging
   public static void main(String[] args) {
     Card c = new Card(4,1);
     System.out.println(c.toString());
     System.out.println(""+c.getSuit());
     System.out.println(""+c.getValue());
-  }
+  }*/
 }

@@ -1,3 +1,4 @@
+//Game scaffold class for all games: x + y positions, the bet value, and amount of winnings to be added to currency.
 public class Game {
   public int amountBet;
   public int posX, posY;

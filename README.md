@@ -1,5 +1,24 @@
 # guapGang
-Final Casino Project
+Final Casino Project - Ben Shpetner, Alexander Zou, Period 3
+
+---
+
+Welcome to our casino! Here we have a grand total of five (5) casino games you can play!
+- Video Poker, Ceelo, Slots, Blackjack, and Roulette
+
+To compile and run, type in (the terminal):
+
+javac -cp lanterna.jar:. Casino.java
+java -cp lanterna.jar:. Casino
+
+For Windows systems, type in:
+
+javac -cp "lanterna.jar;." Casino.java
+javaw -cp "lanterna.jar;." Casino
+
+Have Fun!
+
+---
 
 Development Log:
 
@@ -84,7 +103,14 @@ Ben:
 Ben:
 - Edits to Poker
 - Partial implementation of Poker
+Alex:
+- Started and (essentially) finished Roulette class
+- Successfully implemented basic version of Roulette
 
 1/21/19
 Ben: 
 - Created Roulette color betting system
+Alex:
+- Polished up Roulette rules screen and directions
+- Bug fixes
+- Directions and description in the README file

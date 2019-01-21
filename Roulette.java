@@ -1,4 +1,7 @@
 public class Roulette extends Game {
+  //instance variables include the bard (the 38 numbers)
+  //the box that "wins" the spin
+  //bet values
   public Box[] board = new Box[38];
   public Box winner;
   public int totalBet = 0;
@@ -6,6 +9,7 @@ public class Roulette extends Game {
   public int blackBet = 0;
   public int redBet = 0;
   
+  //sets up board: boxes and their colors
   public Roulette(int x, int y) {
     super(x, y);
     int xC = 0; int yC = 5; int v = -1;
@@ -29,10 +33,13 @@ public class Roulette extends Game {
     winner = board[0];
   }
   
+  //selects a random box from the board
   public Box roll() {
     winner = board[(int) (Math.random() * 100) % 38];
     return winner;
   }
+  
+  //calculates winnings as per roulette rules
   public void calculate() {
     int wink = winner.color;
     if (wink == 0) {
@@ -51,6 +58,8 @@ public class Roulette extends Game {
       winnings += winner.boxBet * 3;
     }
   }
+  
+  //betting on colors and boxes happens here
   public void colorBetUp(int c) {
     c += 5;
     totalBet += 5;

@@ -5,6 +5,7 @@ public class Box {
   public int color;
   public int boxBet = 0;
   
+  //constructor sets x- and y-coordinates, value, and color
   public Box(int x, int y, int v) {
     xCoor = x; yCoor = y;
     value = v;
@@ -15,6 +16,7 @@ public class Box {
     color = cola;
   }
   
+  //for betting individual boxes
   public void selectUp() {
     boxBet += 5;
   }
@@ -22,6 +24,7 @@ public class Box {
     if (boxBet > 0) {boxBet -= 5;}
   }
   
+  //for display on the game screen
   public String toString() {
     String result = "";
     if (value == -1) {
