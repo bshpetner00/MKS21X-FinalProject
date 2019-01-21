@@ -330,16 +330,32 @@ public class Casino {
         int xG = 0; boolean rule = false; boolean endG = false;
         while (true) {
           KeyStroke gKey = screen.pollInput();
-          putString(1, 0, screen, "Money Left: $" + p.currency);
-          putString(1, 1, screen, "Green Bet: $" + rt.greenBet);
-          putString(1, 2, screen, "Black Bet: $" + rt.blackBet);
-          putString(1, 3, screen, "Red Bet: $" + rt.redBet);
-          putString(1, 4, screen, "Total Bet: $" + rt.totalBet);
-          for (int i = 0; i < rt.board.length; i++) {
-            putString(rt.board[i].xCoor, 5, screen, "" + rt.board[i]);
-            putString(rt.board[i].xCoor, 7, screen, "" + rt.board[i].boxBet);
+          if (rule) {
+            putString(1, 1, screen, "---RULES FOR ROULETTE---");
+          putString(1, 2, screen, "-You may bet on as many numbers as you like, as well as specific colors.");
+          putString(1, 3, screen, "-Press enter to spin the wheel. Successful black/red bets pay out at 1:1, green bets at 10:1");
+          putString(1, 1, screen, "-Successful number bets pay out at 2:1, unless the winner is your sole number choice in which case you recieve 35x your bet. ");
+          putString(1, 10, screen, "Press Home to go back to the game, or Escape to go back to the Casino");
+          if (gKey != null) {
+              if (gKey.getKeyType() == KeyType.Escape) {
+                x++; screen.clear();
+                break;}
+              else if (gKey.getKeyType() == KeyType.Home) {
+                rule = false; screen.clear();
+              }
+            }
           }
-          putString(4 * xG + 1, 6, screen, "^");
+          putString(1, 0, screen, "Money Left: $" + p.currency);
+          putString(1, 1, screen, "(F1/F2)Green Bet: $" + rt.greenBet);
+          putString(1, 2, screen, "(F3/F4)Black Bet: $" + rt.blackBet);
+          putString(1, 3, screen, "(F5/F6)Red Bet: $" + rt.redBet);
+          putString(1, 4, screen, "Total Bet: $" + rt.totalBet);
+          putString(1, 5, screen, "Press HOME for rules, or enter to spin the wheel.");
+          for (int i = 0; i < rt.board.length; i++) {
+            putString(rt.board[i].xCoor, 7, screen, "" + rt.board[i]);
+            putString(rt.board[i].xCoor, 9, screen, "" + rt.board[i].boxBet);
+          }
+          putString(4 * xG + 1, 8, screen, "^");
           if (endG) {
             putString(1, 9, screen, "Wheel rolled a: " + rt.winner);
           }
@@ -349,6 +365,7 @@ public class Casino {
               break;}
             else if (gKey.getKeyType() == KeyType.Home) {
               rule = true;
+              screen.clear();
             }
             else if (gKey.getKeyType() == KeyType.ArrowLeft && xG != 0) {xG--;}
             else if (gKey.getKeyType() == KeyType.ArrowRight && xG != 37) {xG++;}

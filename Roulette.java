@@ -48,7 +48,7 @@ public class Roulette extends Game {
       winnings += winner.boxBet * 35;
     }
     else {
-      winnings += winner.boxBet * 2;
+      winnings += winner.boxBet * 3;
     }
   }
   public void colorBetUp(int c) {
