@@ -8,12 +8,12 @@ Welcome to our casino! Here we have a grand total of five (5) casino games you c
 
 To compile and run, type in (the terminal):
 
-javac -cp lanterna.jar:. Casino.java
+javac -cp lanterna.jar:. Casino.java \n
 java -cp lanterna.jar:. Casino
 
 For Windows systems, type in:
 
-javac -cp "lanterna.jar;." Casino.java
+javac -cp "lanterna.jar;." Casino.java \n
 javaw -cp "lanterna.jar;." Casino
 
 Have Fun!
