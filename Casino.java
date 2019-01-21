@@ -323,6 +323,54 @@ public class Casino {
           screen.refresh();
         }
       }
+      
+      if (x == 20 && y == 15) {
+        screen.clear();
+        int xG = 0; boolean rule = false; boolean endG = false;
+        while (true) {
+          KeyStroke gKey = screen.pollInput();
+          putString(1, 0, screen, "Money Left: $" + p.currency);
+          putString(1, 1, screen, "Total Bet: $" + rt.totalBet);
+          for (int i = 0; i < rt.board.length; i++) {
+            putString(rt.board[i].xCoor, 5, screen, "" + rt.board[i]);
+            putString(rt.board[i].xCoor, 7, screen, "" + rt.board[i].boxBet);
+          }
+          putString(3 * xG + 1, 6, screen, "^");
+          if (endG) {
+            putString(1, 9, screen, "Wheel rolled a: " + rt.winner);
+          }
+          if (gKey != null) {
+            if (gKey.getKeyType() == KeyType.Escape) {
+              x++; screen.clear();
+              break;}
+            else if (gKey.getKeyType() == KeyType.Home) {
+              rule = true;
+            }
+            else if (gKey.getKeyType() == KeyType.ArrowLeft && xG != 0) {xG--;}
+            else if (gKey.getKeyType() == KeyType.ArrowRight && xG != 37) {xG++;}
+            else if (gKey.getKeyType() == KeyType.ArrowUp && !endG) {
+              rt.betUp(rt.board[xG]);
+            }
+            else if (gKey.getKeyType() == KeyType.ArrowDown && rt.totalBet > 0 && !endG) {
+              rt.betDown(rt.board[xG]);
+            }
+            else if (gKey.getKeyType() == KeyType.Enter) {
+              if (!endG) {
+                p.bet(rt.totalBet, rt);
+                rt.roll(); rt.calculate();
+                p.set(p.currency + rt.winnings); endG = true;
+              }
+              else {
+                rt = new Roulette(20, 15);
+                endG = false;
+              }
+            }
+            screen.clear();
+          }
+          screen.doResizeIfNecessary();
+          screen.refresh();
+        }
+      }
 
       screen.doResizeIfNecessary();
       screen.refresh();

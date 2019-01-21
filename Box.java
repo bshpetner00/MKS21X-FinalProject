@@ -2,7 +2,6 @@ public class Box {
   public int xCoor;
   public int yCoor;
   public int value;
-  public boolean current = false;
   public int boxBet = 0;
   
   public Box(int x, int y, int v) {
@@ -10,9 +9,13 @@ public class Box {
     value = v;
   }
   
-  public void set(int v) {
-    value = v;
+  public void selectUp() {
+    boxBet += 5;
   }
+  public void selectDown() {
+    boxBet -= 5;
+  }
+  
   public String toString() {
     if (value == -1) {
       return "00";
