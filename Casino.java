@@ -24,9 +24,11 @@ public class Casino {
       KeyStroke key = screen.pollInput();
       screen.setCharacter(x, y, new TextCharacter('@', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       putString(1, 1, screen, "WELCOME TO BIG GUAP CASINO --- LET'S GET THIS BREAD!");
+      //Money counter
       putString(1, 2, screen, "Money: $" + p.currency);
       putString(1, 20, screen, "Use the arrow keys to navigate towards different game tables!");
 
+      //Each game has a TextCharacter on the screen
       Slots slots = new Slots(34, 9);
       screen.setCharacter(slots.posX, slots.posY, new TextCharacter('*', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       putString(32,10,screen,"SLOTS");
@@ -42,7 +44,8 @@ public class Casino {
       Roulette rt = new Roulette(43, 15);
       screen.setCharacter(rt.posX, rt.posY, new TextCharacter('*', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
       putString(39,16,screen,"ROULETTE");
-
+      
+      //For movement
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
         if (key.getKeyType() == KeyType.Escape) {break;}
@@ -53,7 +56,11 @@ public class Casino {
 	       screen.clear();
          //putString(1, 1, screen, key + "");
       }
-
+      
+      //For each game:
+      //Trigger at specific location, prints out interface of the game
+      //Betting at specific button, a button to play
+      //Some games have and endgame screen and a second button to reset the game
       if (x == 34 && y == 9) {
         int bet = 5; boolean rule = false;
         screen.clear();
