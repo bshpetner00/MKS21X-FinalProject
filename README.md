@@ -96,8 +96,8 @@ Development Log:
   - Began to beautify game pages
 
 1/17/18
-Ben:
-- Completely finished vpoker, need to implement
+- Ben:
+  - Completely finished vpoker, need to implement
 
 1/18/19
 - Ben:
