@@ -23,18 +23,25 @@ public class Casino {
     while (true) {
       KeyStroke key = screen.pollInput();
       screen.setCharacter(x, y, new TextCharacter('@', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-      putString(1, 4, screen, "Money: $" + p.currency);
+      putString(1, 1, screen, "WELCOME TO BIG GUAP CASINO --- LET'S GET THIS BREAD!");
+      putString(1, 2, screen, "Money: $" + p.currency);
+      putString(1, 20, screen, "Use the arrow keys to navigate towards different game tables!");
 
-      Slots slots = new Slots(15, 15);
-      screen.setCharacter(slots.posX, slots.posY, new TextCharacter('7', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-      Blackjack bj = new Blackjack(10, 15);
-      screen.setCharacter(bj.posX, bj.posY, new TextCharacter('B', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-      Ceelo ceelo = new Ceelo(5,15);
-      screen.setCharacter(ceelo.posX,ceelo.posY, new TextCharacter('C', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-      Poker poker = new Poker(1,15);
-      screen.setCharacter(poker.posX,poker.posY, new TextCharacter('P', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
-      Roulette rt = new Roulette(20, 15);
-      screen.setCharacter(rt.posX, rt.posY, new TextCharacter('R', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      Slots slots = new Slots(34, 9);
+      screen.setCharacter(slots.posX, slots.posY, new TextCharacter('*', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      putString(32,10,screen,"SLOTS");
+      Blackjack bj = new Blackjack(25, 15);
+      screen.setCharacter(bj.posX, bj.posY, new TextCharacter('*', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      putString(21,16,screen,"BLACKJACK");
+      Ceelo ceelo = new Ceelo(16,9);
+      screen.setCharacter(ceelo.posX,ceelo.posY, new TextCharacter('*', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      putString(14,10,screen,"CEELO");
+      Poker poker = new Poker(6,15);
+      screen.setCharacter(poker.posX,poker.posY, new TextCharacter('*', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      putString(1,16,screen,"VIDEO POKER");
+      Roulette rt = new Roulette(43, 15);
+      screen.setCharacter(rt.posX, rt.posY, new TextCharacter('*', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK));
+      putString(39,16,screen,"ROULETTE");
 
       if (key != null) {
         screen.setCharacter(x, y, new TextCharacter(' '));
@@ -47,7 +54,7 @@ public class Casino {
          //putString(1, 1, screen, key + "");
       }
 
-      if (x == 15 && y == 15) {
+      if (x == 34 && y == 9) {
         int bet = 5; boolean rule = false;
         screen.clear();
         while (true) {
@@ -102,7 +109,7 @@ public class Casino {
         }
       }
 
-      if (x == 10 & y == 15) {
+      if (x == 25 & y == 15) {
         int bet = 5; boolean endG = false; boolean rule = false;
         screen.clear();
         while (true) {
@@ -185,7 +192,7 @@ public class Casino {
         }
       }
 
-    if (x == 5 && y == 15) {
+    if (x == 16 && y == 9) {
       int bet = 5; boolean rule = false;
       screen.clear();
       while (true) {
@@ -252,7 +259,7 @@ public class Casino {
         }
     }
 
-    if (x == 1 && y == 15) {
+    if (x == 6 && y == 15) {
         int bet = 5; boolean rule = false; boolean dealt = false;
         screen.clear();
         while (true) {
@@ -334,7 +341,7 @@ public class Casino {
         }
       }
       
-      if (x == 20 && y == 15) {
+      if (x == 43 && y == 15) {
         screen.clear();
         int xG = 0; boolean rule = false; boolean endG = false;
         while (true) {

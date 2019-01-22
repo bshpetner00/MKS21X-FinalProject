@@ -3,7 +3,7 @@ Final Casino Project - Ben Shpetner, Alexander Zou, Period 3
 
 ---
 
-Welcome to our casino! Here we have a grand total of five (5) casino games you can play!
+Welcome to Big Guap Casino! Here we have a grand total of five (5) casino games you can play!
 - Video Poker, Ceelo, Slots, Blackjack, and Roulette
 
 To compile, type in (the terminal):
@@ -116,6 +116,7 @@ Ben:
   - Created Roulette color betting system
   - Fixed bugs with Roulette betting
   - Fully implemented Vpoker
+  - Decorated Big Guap Casino and made it a little more inviting
 - Alex:
   - Polished up Roulette rules screen and directions
   - Bug fixes
