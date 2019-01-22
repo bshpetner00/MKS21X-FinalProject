@@ -71,12 +71,12 @@ Development Log:
   - Started and (tentatively) finished Deck and Cards
 - Ben:
   - Created video poker scaffold
+  - Finished and implemented ceelo into the casino
 
 1/13/19
 - Ben:
-  - Finished and implemented ceelo into the casino
   - 75% done with video poker
-  - Tested all the betting and moving to make sure that the casino works as intended on all systems
+  - Tested all the betting and moving to make sure that the casino works as intended on all systems for the demo
 
 1/14/19
 - Ben:
@@ -84,7 +84,7 @@ Development Log:
 
 1/15/19
 - Ben:
-  - Fixed blackjack bug
+  - Fixed blackjack bugs
 - Alex:
   - Added directions for Slots and Blackjack
 
@@ -103,9 +103,6 @@ Ben:
 - Ben:
   - Started vpoker implementation
 
-1/19/10
-???
-
 1/20/19
 - Ben:
   - Edits to Poker
@@ -117,6 +114,8 @@ Ben:
 1/21/19
 - Ben: 
   - Created Roulette color betting system
+  - Fixed bugs with Roulette betting
+  - Fully implemented Vpoker
 - Alex:
   - Polished up Roulette rules screen and directions
   - Bug fixes

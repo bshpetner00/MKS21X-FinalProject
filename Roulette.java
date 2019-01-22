@@ -60,14 +60,6 @@ public class Roulette extends Game {
   }
   
   //betting on colors and boxes happens here
-  public void colorBetUp(int c) {
-    c += 5;
-    totalBet += 5;
-  }
-  public void colorBetDown(int c) {
-    c -= 5;
-    totalBet -= 5;
-  }
   public void betUp(Box b) {
     b.selectUp();
     totalBet += 5;

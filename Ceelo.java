@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Ceelo extends Game {
 	public ArrayList<Integer> playerDice,dealerDice; //arrays of 3 dice each
-	public int playerScore,dealerScore;
+	public int playerScore,dealerScore; //self explanatory
 	public boolean setMatch; //true if win, false if loss
 	public Ceelo(int x, int y) {
 		super(x,y);
@@ -23,12 +23,12 @@ public class Ceelo extends Game {
 			dice.add((int) (Math.random() * 10) % 6 + 1); //number between 1 & 6
 		}
 		if (calcScore(dice) == 0) {
-			roll(dice);
+			roll(dice); //auto reroll in the event of a non-scoring roll
 		}
 	}
 	public int calcScore(ArrayList<Integer> dice) {
 		int score = 0;
-		if (dice.contains(4) && dice.contains(5) && dice.contains(6)) { //win condition of ceelo
+		if (dice.contains(4) && dice.contains(5) && dice.contains(6)) { //auto win condition of ceelo
 			score = 100;
 		}
 		else if (dice.get(0) == dice.get(1) && dice.get(1) == dice.get(2)) { //triples
@@ -43,13 +43,13 @@ public class Ceelo extends Game {
 		else if (dice.get(0) != dice.get(1) && dice.get(1) == dice.get(2)) { //normal hand
 			score = dice.get(0);
 		}
-		else if (dice.contains(1) && dice.contains(2) && dice.contains(3)) { //normal hand
+		else if (dice.contains(1) && dice.contains(2) && dice.contains(3)) { //auto loss condition of ceelo
 			score = -100;
 		}
 		return score;
 	}
 	public void setMatch(int pscore, int dscore) {
-		if (dscore == 0) {
+		if (dscore == 0) { //checking for player 456/123 (auto win/loss without even checking dealer's dice)
 			if (pscore == 100) {
 				this.setMatch = true;
 			}
@@ -59,10 +59,10 @@ public class Ceelo extends Game {
 		}
 		else {
 			if (dscore == 100) {
-				this.setMatch = false;
+				this.setMatch = false; //dealer auto-win (456)
 			}
 			else if (dscore == -100) {
-				this.setMatch = true;
+				this.setMatch = true; //dealer auto-loss (123)
 			}
 			if (pscore > dscore) {
 				this.setMatch = true;
@@ -70,7 +70,7 @@ public class Ceelo extends Game {
 			if (pscore < dscore) {
 				this.setMatch = false;
 			}
-			if (pscore == dscore) {
+			if (pscore == dscore) { //if scores are equal, redo everything to get two distinct scores for player & dealer
 				this.roll(this.playerDice);
 				this.roll(this.dealerDice);
 				this.playerScore = this.calcScore(this.playerDice);
@@ -80,10 +80,10 @@ public class Ceelo extends Game {
 			}
 		}
 		if (this.setMatch) {
-			winnings = 2 * amountBet;
+			winnings = 2 * amountBet; //win
 		}
 		else {
-			winnings = 0;
+			winnings = 0; //lose
 		}
 	}
 }

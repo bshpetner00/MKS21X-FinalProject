@@ -2,9 +2,8 @@ import java.util.*;
 
 public class Poker extends Game {
 	private Deck deck;
-	public int score = 0;
 	public ArrayList<Card> hand = new ArrayList<Card>();
-	public boolean one,two,three,four,five;
+	public boolean one,two,three,four,five; //if x is true then card x will be discarded and replaced on deal2 
 	public Poker(int x, int y) {
 		super(x,y);
 		deck = new Deck();
@@ -14,26 +13,26 @@ public class Poker extends Game {
 		four = false;
 		five = false;
 	}
-	public void deal1() {
+	public void deal1() { //5 brand spankin new cards
 		for (int i = 0; i < 5; i++) {
 			hand.add(deck.deal());
 		}
 	}
-	public void deal2(boolean one, boolean two, boolean three, boolean four, boolean five) {
+	public void deal2(boolean one, boolean two, boolean three, boolean four, boolean five) { //for each boolean that is true the corresponding card is replaced with a new one
 		if (one) {
 			hand.set(0, deck.deal());
 		}
 		if (two) {
-			hand.set(0, deck.deal());
+			hand.set(1, deck.deal());
 		}
 		if (three) {
-			hand.set(0, deck.deal());
+			hand.set(2, deck.deal());
 		}
 		if (four) {
-			hand.set(0, deck.deal());
+			hand.set(3, deck.deal());
 		}
 		if (five) {
-			hand.set(0, deck.deal());
+			hand.set(4, deck.deal());
 		}
 	}
 	public void calculate(ArrayList<Card> cards) {
@@ -60,7 +59,7 @@ public class Poker extends Game {
 
 		boolean royalStraight = false;
 		if (lowVal == 1 && values.contains(10) && values.contains(11) && values.contains(12) && values.contains(13)) {
-			royalStraight = true; //for ace then 10/J/Q/K
+			royalStraight = true; //for straight containing ace with 10/J/Q/K
 		}
 
 		if (royalStraight && flush) {
@@ -92,7 +91,7 @@ public class Poker extends Game {
 					tresVal = trace.get(2);
 				}
 			}
-		}
+		} //3 of a kind
 
 		boolean dos = false;
 		if (tres) {
@@ -102,7 +101,7 @@ public class Poker extends Game {
 			if ((trace.get(0)).equals(trace.get(1))) {
 				dos = true;
 			}
-		}
+		} //checks for pair and triple
 
 		if (tres && dos) {
 			winnings = amountBet * 9;

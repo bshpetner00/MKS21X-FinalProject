@@ -197,7 +197,7 @@ public class Casino {
           putString(1, 6, screen, "Dealer's Roll" + ceelo.dealerDice);
           putString(1, 7, screen, "Dealer's Score For This Round: " + ceelo.dealerScore);
           putString(1, 15, screen, "Press Tab to roll the dice");
-          putString(1, 16, screen, "Press Enter to start a new round.");
+          putString(1, 16, screen, "Press Enter to reset the table for another round.");
           putString(1, 17, screen, "Press Home to view the rules");
           putString(1, 18, screen, "Press Escape to leave the game.");
           if (rule) {
@@ -259,7 +259,7 @@ public class Casino {
           KeyStroke gKey = screen.pollInput();
           if (rule) {
             putString(1, 1, screen, "---RULES FOR POKER---");
-          putString(1, 3, screen, "-You initially get 5 cards, and you may select which you want to discard and have replaced by pressing numbers 1-5");
+          putString(1, 3, screen, "-You initially get 5 cards, and you may select which you want to discard and have replaced by pressing F1-F5");
           putString(1, 4, screen, "-You will then recieve your new cards and the value of your hand/potential winnings will be calculated and disbursed respectively");
           putString(1, 10, screen, "Press Home to go back to the game, or Escape to go back to the Casino");
           if (gKey != null) {
@@ -276,9 +276,9 @@ public class Casino {
             putString(1, 1, screen, "Current Bet: $" + bet);
             putString(1, 2, screen, "Your Cards: " + poker.hand);
             putString(1, 15, screen, "Press Up or Down to bet higher or lower");
-            putString(1, 16, screen, "Press Tab to get your starting hand");
+            putString(1, 16, screen, "Press Tab to place a bet and recieve your starting hand");
             putString(1, 17, screen, "Press F1-F5 to select cards which you'd like to discard");
-            putString(1, 18, screen, "Press Enter to conclude the round.");
+            putString(1, 18, screen, "Press Enter to conclude the round, and Tab again to begin the next.");
             putString(1, 19, screen, "Press Home to view rules & Press Escape to leave the game");
             if (gKey != null) {
               if (gKey.getKeyType() == KeyType.Escape) {
@@ -292,6 +292,8 @@ public class Casino {
                   putString(1, 10, screen, "INVALID BET");
                 }
                 else {
+                  poker.hand.clear();
+                  
                   poker.deal1();
                 }
               }
@@ -313,7 +315,14 @@ public class Casino {
               else if (gKey.getKeyType() == KeyType.Enter && (poker.hand).size() > 0) {
                 poker.deal2(poker.one,poker.two,poker.three,poker.four,poker.five);
                 poker.calculate(poker.hand);
+                p.set(p.currency + poker.winnings);
                 poker.winnings = 0;
+                poker.one = false;
+                poker.two = false;
+                poker.three = false;
+                poker.four = false;
+                poker.five = false;
+
               }
               else if (gKey.getKeyType() == KeyType.ArrowUp) {bet = bet + 5;}
               else if (gKey.getKeyType() == KeyType.ArrowDown && bet - 5 > 0) {bet = bet - 5;}
@@ -370,34 +379,48 @@ public class Casino {
             else if (gKey.getKeyType() == KeyType.ArrowLeft && xG != 0) {xG--;}
             else if (gKey.getKeyType() == KeyType.ArrowRight && xG != 37) {xG++;}
             else if (gKey.getKeyType() == KeyType.ArrowUp && !endG) {
-              rt.betUp(rt.board[xG]);
+              if (rt.totalBet + 5 <= p.currency) {
+                rt.betUp(rt.board[xG]);
+              }
             }
             else if (gKey.getKeyType() == KeyType.ArrowDown && rt.totalBet > 0 && !endG) {
               rt.betDown(rt.board[xG]);
             }
             else if (gKey.getKeyType() == KeyType.F1 && !endG) {
-              rt.greenBet += 5;
-              rt.totalBet += 5;
+              if (rt.totalBet + 5 <= p.currency) {
+                rt.greenBet += 5;
+                rt.totalBet += 5;
+              }
             }
             else if (gKey.getKeyType() == KeyType.F2 && !endG) {
-              rt.greenBet -= 5;
-              rt.totalBet -= 5;
+              if (rt.totalBet > 0) {
+                rt.greenBet -= 5;
+                rt.totalBet -= 5;
+              }
             }
             else if (gKey.getKeyType() == KeyType.F3 && !endG) {
-              rt.blackBet += 5;
-              rt.totalBet += 5;
+              if (rt.totalBet + 5 <= p.currency) {
+                rt.blackBet += 5;
+                rt.totalBet += 5;
+              }
             }
             else if (gKey.getKeyType() == KeyType.F4 && !endG) {
-              rt.blackBet -= 5;
-              rt.totalBet -= 5;
+              if (rt.totalBet > 0) {
+                rt.blackBet -= 5;
+                rt.totalBet -= 5;
+              }
             }
             else if (gKey.getKeyType() == KeyType.F5 && !endG) {
-              rt.redBet += 5;
-              rt.totalBet += 5;
+              if (rt.totalBet + 5 <= p.currency) {
+                rt.redBet += 5;
+                rt.totalBet += 5;
+              }
             }
             else if (gKey.getKeyType() == KeyType.F6 && !endG) {
-              rt.redBet -= 5;
-              rt.totalBet -= 5;
+              if (rt.totalBet > 0) {
+                rt.redBet -= 5;
+                rt.totalBet -= 5;
+              }
             }
             else if (gKey.getKeyType() == KeyType.Enter) {
               if (!endG) {
